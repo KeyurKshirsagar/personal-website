@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e1e1c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Keyur Kshirsagar — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,7 +36,10 @@
       <!-- Place your photo at assets/profile.jpg -->
       <img src="./assets/profile.jpg" alt="Keyur" class="nav-avatar" />
     </a>
-    <div class="nav-links">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
       <a href="#home" class="nav-pill">Home</a>
       <a href="#about" class="nav-pill">About</a>
       <a href="#experience" class="nav-pill">Experience</a>
@@ -89,7 +95,7 @@
       </div>
       <div class="home-image reveal-up">
         <div class="home-image-frame">
-          <img src="/hero.png" alt="Keyur Kshirsagar skydiving" />
+          <img src="/hero.jpg" alt="Keyur Kshirsagar skydiving" />
         </div>
         <p class="home-image-caption">Acceleration due to gravity</p>
       </div>

@@ -137,6 +137,26 @@ const aboutObserver = new IntersectionObserver(
 
 aboutElements.forEach((el) => aboutObserver.observe(el));
 
+/* ===== Mobile hamburger menu ===== */
+const navHamburger = document.getElementById('navHamburger');
+const navLinks = document.getElementById('navLinks');
+
+if (navHamburger && navLinks) {
+  navHamburger.addEventListener('click', () => {
+    navHamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('.nav-pill').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 600) {
+        navHamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      }
+    });
+  });
+}
+
 /* ===== CONNECT overlay ===== */
 const connectTrigger = document.getElementById('connectTrigger');
 const connectOverlay = document.getElementById('connectOverlay');
@@ -147,6 +167,10 @@ const socialFloat = document.getElementById('socialFloat');
 function openOverlay() {
   connectOverlay.classList.add('open');
   socialFloat.classList.add('hidden');
+  if (navHamburger && navLinks && window.innerWidth <= 600) {
+    navHamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  }
 }
 
 function closeOverlay() {

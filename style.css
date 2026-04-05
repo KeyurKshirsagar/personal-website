@@ -122,6 +122,10 @@ a {
 .nav-monogram {
   display: flex;
   align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .nav-avatar {
@@ -130,7 +134,8 @@ a {
   border-radius: 50%;
   border: 1.5px solid var(--accent);
   object-fit: cover;
-  object-position: center 25%;
+  object-position: center 35%;
+  transform: scale(1.15);
   transition: all 0.25s ease;
 }
 
@@ -882,64 +887,384 @@ a {
   transform: translateX(0) scale(1);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+/* ===== HAMBURGER BUTTON (hidden on desktop/tablet) ===== */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.nav-hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== RESPONSIVE — LAPTOPS / SMALL DESKTOPS (max-width: 1024px) ===== */
+@media (max-width: 1024px) {
   .nav {
-    padding: 0 24px;
+    padding: 0 32px;
   }
 
   .section {
-    padding: 0 24px;
+    padding: 0 32px;
   }
 
   .section-rule {
-    margin: 0 24px;
+    margin: 0 32px;
+  }
+
+  .nav-pill {
+    padding: 7px 16px;
+    font-size: 13px;
+  }
+
+  .home-image-frame {
+    width: 280px;
+  }
+
+  .section-about,
+  .section-experience,
+  .section-projects {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .footer {
+    padding: 48px 32px;
+  }
+}
+
+/* ===== RESPONSIVE — TABLETS (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 28px;
+  }
+
+  .nav-pill {
+    padding: 7px 14px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
   }
 
   .home-content {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 32px;
   }
 
   .home-first,
   .home-last {
-    font-size: clamp(48px, 13vw, 100px);
+    font-size: clamp(48px, 9vw, 100px);
+  }
+
+  .home-subtitle {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+  }
+
+  .home-tagline {
+    font-size: 16px;
   }
 
   .home-image-frame {
-    width: 260px;
+    width: 240px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .section-heading {
+    font-size: clamp(42px, 9vw, 80px);
+    margin-bottom: 44px;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  .social-float {
-    bottom: 16px;
-    left: 16px;
+  .connect-icons {
+    gap: 32px;
+  }
+
+  .connect-icon-circle {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* ===== RESPONSIVE — PHONES (max-width: 600px) ===== */
+@media (max-width: 600px) {
+  .nav {
+    padding: 0 20px;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(30, 30, 28, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 24px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-pill {
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 15px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section {
+    padding: 0 20px;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+  }
+
+  .section-rule {
+    margin: 0 20px;
+  }
+
+  .section-home {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: 96px;
+    padding-bottom: 100px;
+  }
+
+  .home-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .home-first,
+  .home-last {
+    font-size: clamp(40px, 12vw, 80px);
+  }
+
+  .home-info {
+    margin-top: 24px;
+  }
+
+  .home-subtitle {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .home-tagline {
+    font-size: 15px;
+  }
+
+  .home-image {
+    align-self: center;
+  }
+
+  .home-image-frame {
+    width: min(220px, 60vw);
+  }
+
+  .home-image-caption {
+    font-size: 11px;
   }
 
   .scroll-indicator {
-    right: 24px;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    right: 20px;
+    bottom: max(24px, env(safe-area-inset-bottom));
   }
 
   .section-about,
   .section-experience,
   .section-projects {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .section-heading {
+    font-size: clamp(36px, 10vw, 64px);
+    margin-bottom: 32px;
+  }
+
+  .about-para-1 {
+    font-size: 15px;
+  }
+
+  .about-para-2 {
+    font-size: 14px;
+  }
+
+  .about-quote {
+    font-size: 18px;
+  }
+
+  .facts-card {
+    padding: 20px 20px 28px;
+  }
+
+  .timeline {
+    padding-left: 24px;
+  }
+
+  .timeline-dot {
+    left: -28px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .timeline-card {
+    padding: 18px;
+  }
+
+  .card-company {
+    font-size: 20px;
+  }
+
+  .card-role {
+    font-size: 13px;
+  }
+
+  .card-meta {
+    font-size: 12px;
+  }
+
+  .card-desc {
+    font-size: 14px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+
+  .project-card {
+    padding: 20px;
+  }
+
+  .project-name {
+    font-size: 28px;
+  }
+
+  .project-desc {
+    font-size: 13px;
+  }
+
+  .social-float {
+    bottom: max(16px, env(safe-area-inset-bottom));
+    left: max(16px, env(safe-area-inset-left));
+    gap: 6px;
+  }
+
+  .social-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .social-btn::after {
+    display: none;
+  }
+
+  .footer {
+    padding: 40px 20px;
+    padding-bottom: max(40px, calc(16px + env(safe-area-inset-bottom)));
+  }
+
+  .connect-overlay-content {
+    padding: 24px;
+  }
+
+  .connect-heading {
+    font-size: 32px;
   }
 
   .connect-icons {
     flex-wrap: wrap;
-    gap: 32px;
+    gap: 24px;
     justify-content: center;
-    max-width: 280px;
+    max-width: 260px;
+  }
+
+  .connect-icon-circle {
+    width: 56px;
+    height: 56px;
+  }
+
+  .connect-icon-circle svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .connect-platform {
+    font-size: 11px;
+  }
+
+  .connect-close {
+    top: max(16px, env(safe-area-inset-top));
+    right: max(16px, env(safe-area-inset-right));
+  }
+}
+
+/* ===== iOS NOTCH / DYNAMIC ISLAND SAFE AREAS ===== */
+@supports (padding: env(safe-area-inset-top)) {
+  .nav {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .scroll-progress {
+    top: env(safe-area-inset-top);
   }
 }
