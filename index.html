@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyur Kshirsagar — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <canvas id="bg-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:-1;"></canvas>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Noise + scan-line overlay -->
+  <div class="noise-overlay">
+    <svg width="100%" height="100%">
+      <filter id="noiseFilter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+    </svg>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#home" class="nav-monogram">
+      <!-- Place your photo at assets/profile.jpg -->
+      <img src="./assets/profile.jpg" alt="Keyur" class="nav-avatar" />
+    </a>
+    <div class="nav-links">
+      <a href="#home" class="nav-pill">Home</a>
+      <a href="#about" class="nav-pill">About</a>
+      <a href="#experience" class="nav-pill">Experience</a>
+      <a href="#projects" class="nav-pill">Projects</a>
+      <button class="nav-pill nav-pill-cta" id="connectTrigger">Connect</button>
+    </div>
+  </nav>
+
+  <!-- Floating Social Buttons -->
+  <div class="social-float" id="socialFloat">
+    <a href="https://www.linkedin.com/in/kkshirsa/" target="_blank" rel="noopener" class="social-btn" data-tooltip="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+    <a href="https://github.com/keyurkshirsagar" target="_blank" rel="noopener" class="social-btn" data-tooltip="GitHub">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+      </svg>
+    </a>
+    <a href="https://letterboxd.com/KshirsagarKeyur/" target="_blank" rel="noopener" class="social-btn" data-tooltip="Letterboxd">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="2"/>
+        <rect x="5" y="6" width="3" height="12" rx="1"/>
+        <rect x="10.5" y="6" width="3" height="12" rx="1"/>
+        <rect x="16" y="6" width="3" height="12" rx="1"/>
+      </svg>
+    </a>
+    <a href="mailto:kkshirsa@uwaterloo.ca" class="social-btn" data-tooltip="Email">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+    </a>
+  </div>
+
+  <main class="main-container">
+
+  <!-- HOME -->
+  <section id="home" class="section section-home">
+    <div class="home-content">
+      <div class="home-text">
+        <div class="home-name">
+          <span class="home-first reveal-up">Keyur</span>
+          <span class="home-last reveal-up">Kshirsagar.</span>
+        </div>
+        <div class="home-info">
+          <p class="home-subtitle reveal-up">Computer Engineering @ University of Waterloo</p>
+          <p class="home-tagline reveal-up">Software Developer · Film Enthusiast</p>
+        </div>
+      </div>
+      <div class="home-image reveal-up">
+        <div class="home-image-frame">
+          <img src="/hero.png" alt="Keyur Kshirsagar skydiving" />
+        </div>
+        <p class="home-image-caption">Acceleration due to gravity</p>
+      </div>
+    </div>
+    <div class="scroll-indicator reveal-up">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-about">
+    <h2 class="section-heading">ABOUT</h2>
+    <div class="about-grid">
+      <div class="about-bio animate-in-left">
+        <p class="about-para-1">I'm a Computer Engineering student at the University of Waterloo, currently on the hunt for my next internship in software development.</p>
+        <p class="about-para-2">When I'm not writing code, I'm watching films obsessively and logging them on Letterboxd.</p>
+        <blockquote class="about-quote">IF IT AIN'T BROKE, DON'T FIX IT.</blockquote>
+      </div>
+      <div class="about-facts animate-in-right">
+        <div class="facts-card">
+          <h3 class="facts-title">QUICK FACTS</h3>
+          <div class="facts-list">
+            <div class="fact-row">🎓  B.ASc Computer Engineering, UWaterloo</div>
+            <div class="fact-row">📍  Waterloo, ON</div>
+            <div class="fact-row">🚀  Seeking: SWE Internship 2025/2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section section-experience">
+    <h2 class="section-heading">EXPERIENCE</h2>
+    <div class="timeline">
+
+      <div class="timeline-entry animate-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="card-company">First National Financial LP</span>
+          <span class="card-role">QA Analyst Intern</span>
+          <span class="card-meta">Sept 2024 – April 2025 · Toronto, ON</span>
+          <p class="card-desc">200+ test cases authored across Workflow Management and Merlin platforms — zero production defect escapes.</p>
+          <p class="card-desc">Led QA for 4 production releases end-to-end; slashed access-request approval time from 2–3 days to under 1 day.</p>
+          <div class="card-tags">
+            <span class="tag">Azure DevOps</span>
+            <span class="tag">Postman</span>
+            <span class="tag">Swagger</span>
+            <span class="tag">Regression Testing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-entry animate-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="card-company">CLEAResult</span>
+          <span class="card-role">Operations Analyst</span>
+          <span class="card-meta">Jan 2024 – April 2024 · Toronto, ON</span>
+          <p class="card-desc">Market research on high-consumption regions, delivering sustainable product solutions with measurable cost reduction.</p>
+          <div class="card-tags">
+            <span class="tag">Excel</span>
+            <span class="tag">Genesys Cloud</span>
+            <span class="tag">Data Analysis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-entry animate-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="card-company">Waterloo Accelerate Program</span>
+          <span class="card-role">Azure & AI Project</span>
+          <span class="card-meta">May 2023 – Aug 2023 · Waterloo, ON</span>
+          <p class="card-desc">Designed an Azure AI pipeline for fraud/phishing detection — projected 24% reduction in financial fraud targeting older adults.</p>
+          <div class="card-tags">
+            <span class="tag">Azure AI</span>
+            <span class="tag">Pipeline Design</span>
+            <span class="tag">Anomaly Detection</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section section-projects">
+    <h2 class="section-heading">PROJECTS</h2>
+    <div class="projects-grid">
+
+      <div class="project-card animate-in">
+        <div class="project-header">
+          <span class="project-name">Diamond Hands</span>
+          <span class="project-status status-active"><span class="status-dot"></span>Active</span>
+        </div>
+        <div class="project-tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Tailwind CSS</span>
+        </div>
+        <p class="project-desc">Stock-tracking web app with transaction recording, watchlists, and portfolio views. Responsive UI with clean state management.</p>
+        <div class="project-accent-line"></div>
+      </div>
+
+      <div class="project-card animate-in">
+        <div class="project-header">
+          <span class="project-name">Tokenizer</span>
+          <span class="project-status status-completed">Completed</span>
+        </div>
+        <div class="project-tags">
+          <span class="tag">C++</span>
+        </div>
+        <p class="project-desc">NLP tokenizer for large text corpora. Custom hashtable implementation for rapid dictionary lookups.</p>
+        <div class="project-accent-line"></div>
+      </div>
+
+      <div class="project-card animate-in">
+        <div class="project-header">
+          <span class="project-name">Air Fly</span>
+          <span class="project-status status-completed">Completed</span>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">MySQL</span>
+        </div>
+        <p class="project-desc">Airline Management System with relational database backend, flight reservation, and employee/customer management modules.</p>
+        <div class="project-accent-line"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Keyur Kshirsagar © 2025</p>
+  </footer>
+
+  </main>
+
+  <!-- CONNECT overlay -->
+  <div class="connect-overlay" id="connectOverlay">
+    <button class="connect-close" id="connectClose">&times;</button>
+    <div class="connect-overlay-content" id="connectContent">
+      <h3 class="connect-heading">LET'S CONNECT!</h3>
+      <div class="connect-rule"></div>
+      <div class="connect-icons">
+        <a href="https://www.linkedin.com/in/kkshirsa/" target="_blank" rel="noopener" class="connect-icon-block">
+          <div class="connect-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <span class="connect-platform">LinkedIn</span>
+        </a>
+        <a href="https://github.com/keyurkshirsagar" target="_blank" rel="noopener" class="connect-icon-block">
+          <div class="connect-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </div>
+          <span class="connect-platform">GitHub</span>
+        </a>
+        <a href="https://letterboxd.com/KshirsagarKeyur/" target="_blank" rel="noopener" class="connect-icon-block">
+          <div class="connect-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+              <rect x="5" y="6" width="3" height="12" rx="1"/>
+              <rect x="10.5" y="6" width="3" height="12" rx="1"/>
+              <rect x="16" y="6" width="3" height="12" rx="1"/>
+            </svg>
+          </div>
+          <span class="connect-platform">Letterboxd</span>
+        </a>
+        <a href="mailto:kkshirsa@uwaterloo.ca" class="connect-icon-block">
+          <div class="connect-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <span class="connect-platform">Email</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
